@@ -1,4 +1,4 @@
-﻿#include <IbInputSimulator/InputSimulator.hpp>
+#include <IbInputSimulator/InputSimulator.hpp>
 using namespace Send;
 
 #include <IbInputSimulator/SendTypes/types.hpp>
@@ -129,6 +129,7 @@ DLLAPI Send::Error __stdcall IbSendInit(SendType type, InitFlags flags, void* ar
                 Error error = type->create();
                 if (error != Error::Success)
                     return error;
+                type->enable_mouse_device();
                 main::send = std::move(type);
             }
             break;
